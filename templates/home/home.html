@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+
+<div class="container my-3">
+ <h2>Coding Queries by Edutech:</h2>
+
+  
+    
+    {% for post in allquery %}
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 my-4 position-relative">
+    <div class='col p-4 d-flex-cloumn postion-static'>
+    <strong class='d-inline-block mb-2 text-primary'>Query by {{post.user.username}}</strong>
+    <h3 class='mb-0'><a class="text-dark" href="/doubt/{{post.slug}}">{{post.title}}</a></h3>
+    <div class="mb-1 text-muted">{{post.datetime}}</div>
+   <a href="/doubt/{{post.slug}}"> <p class='card-text mb-auto'><div class="preview">{{post.detail|safe|truncatechars:200}}</div></p>
+    <div class='my-2'>
+    </a>
+    </div>
+   </div>
+
+    </div>
+    {% endfor %}
+    </div>
+<!--<img src="{% static 'img/home.jpg' %}" alt="Edutech" class="responsive">-->
+
+{% endblock head %}
+
+
+

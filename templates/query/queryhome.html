@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<hr>
+<div class="container my-3">
+ <h2>Coding Queries by Edutech:</h2>
+ 
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Ask a Question</button>
+  
+<div class="container mt-4 mb-4">
+<!--<button class="open-button" onclick="openForm()">Ask a Question</button>-->
+
+<div class="collapse" id="collapseExample">
+<div class="form-popup" id="myForm">
+ {% if user.is_authenticated %}
+<form action='/doubt/postquery' method="post">
+{{form}}
+    {% csrf_token %}
+     <!--<button type="button" class="btn cancel" onclick="closeForm()">X</button>-->
+    <div class="form-group">
+      <label for="title"><h3>Title or Summary</h3></label>
+      <input type="text" class="form-control" id="title" name="title" placeholder="e.g. Type your Query here?">
+    </div>
+    <div class="form-group">
+      <label for="detail"><h3>Details (optional)</h3></label>
+      <textarea class="form-control" id="mytextarea" name="detail"></textarea><br>
+      <button type="submit" class="btn btn-primary">Publish</button>
+      <!--<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">-->
+    </div>
+  </form>
+  {% else %}
+     <h4>Please login to post a Query</h4>
+     {% endif %}
+  </div>
+  </div>
+  </div>
+{% endblock head %}
+<style>
